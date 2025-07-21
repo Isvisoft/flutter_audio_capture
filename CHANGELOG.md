@@ -65,3 +65,7 @@
 
 - Removed deprecated `PluginRegistry.Registrar` usage in Android plugin to
   resolve build errors on recent Flutter versions
+
+## 1.1.12
+
+- Deactivated iOS audio session on stop to restore output audio
