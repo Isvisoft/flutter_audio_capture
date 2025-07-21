@@ -90,5 +90,11 @@ public class AudioCapture {
     public func stopSession() {
         audioEngine.inputNode.removeTap(onBus: 0)
         audioEngine.stop()
+        let audioSession = AVAudioSession.sharedInstance()
+        do {
+            try audioSession.setActive(false, options: .notifyOthersOnDeactivation)
+        } catch {
+            print("❌ Failed to deactivate AudioSession: \(error.localizedDescription)")
+        }
     }
 }
