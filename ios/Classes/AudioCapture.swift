@@ -93,8 +93,11 @@ public class AudioCapture {
         let audioSession = AVAudioSession.sharedInstance()
         do {
             try audioSession.setActive(false, options: .notifyOthersOnDeactivation)
+            try audioSession.setCategory(.ambient, options: [.mixWithOthers])
+            try audioSession.setActive(true, options: .notifyOthersOnDeactivation)
+            print("✅ AudioSession desactivada y liberada correctamente")
         } catch {
-            print("❌ Failed to deactivate AudioSession: \(error.localizedDescription)")
+            print("❌ Error al liberar AudioSession: \(error.localizedDescription)")
         }
     }
 }

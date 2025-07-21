@@ -69,3 +69,8 @@
 ## 1.1.12
 
 - Deactivated iOS audio session on stop to restore output audio
+
+## 1.1.13
+
+- Reset iOS audio session to `.ambient` after stopping to fully release the
+  microphone and allow playback
