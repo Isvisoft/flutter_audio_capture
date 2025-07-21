@@ -90,5 +90,14 @@ public class AudioCapture {
     public func stopSession() {
         audioEngine.inputNode.removeTap(onBus: 0)
         audioEngine.stop()
+        let audioSession = AVAudioSession.sharedInstance()
+        do {
+            try audioSession.setActive(false, options: .notifyOthersOnDeactivation)
+            try audioSession.setCategory(.ambient, options: [.mixWithOthers])
+            try audioSession.setActive(true, options: .notifyOthersOnDeactivation)
+            print("✅ AudioSession desactivada y liberada correctamente")
+        } catch {
+            print("❌ Error al liberar AudioSession: \(error.localizedDescription)")
+        }
     }
 }
